@@ -11,17 +11,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="filter-sort"
+        android:textColor="@color/green"
         android:textAllCaps="true"
-        android:layout_margin="16dp"/>
+        android:layout_margin="12dp"/>
 
     <TextView
-        android:id="@+id/tv_market_price"
+        android:id="@+id/tv_market_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Market Price"
-        android:textAllCaps="true"
+        android:textColor="@color/green"
+        android:textAllCaps="false"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
+        android:layout_margin="12dp"
         android:layout_alignParentRight="true" />
 
     <androidx.recyclerview.widget.RecyclerView

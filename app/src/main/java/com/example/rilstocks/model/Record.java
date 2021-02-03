@@ -37,7 +37,7 @@ public class Record {
     private Double closePrice;
     @SerializedName("marketCap")
     @Expose
-    private Integer marketCap;
+    private Long marketCap;
     @SerializedName("livePriceDto")
     @Expose
     private LivePriceDto livePriceDto;
@@ -122,11 +122,11 @@ public class Record {
         this.closePrice = closePrice;
     }
 
-    public Integer getMarketCap() {
+    public Long getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(Integer marketCap) {
+    public void setMarketCap(Long marketCap) {
         this.marketCap = marketCap;
     }
 

@@ -1,10 +1,12 @@
 package com.example.rilstocks;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.rilstocks.model.MarketUiData;
 import com.example.rilstocks.model.Record;
 
 import java.util.ArrayList;
@@ -15,10 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.StockViewHolder> {
 
-    List<Record> records = new ArrayList<>();
+    List<MarketUiData> marketDataList = new ArrayList<>();
+    Context context;
 
-    public StockListAdapter(List<Record> listdata) {
-        this.records = listdata;
+    public StockListAdapter(List<MarketUiData> marketDataList,Context context) {
+        this.marketDataList = marketDataList;
+        this.context = context;
     }
 
     @NonNull
@@ -32,23 +36,30 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
 
     @Override
     public void onBindViewHolder(@NonNull StockViewHolder holder, int position) {
-//        final MyListData myListData = listdata[position];
-        holder.tv_company_name.setText(records.get(position).getCompanyShortName());
-        holder.tv_share_price.setText(records.get(position).getMarketCap());
+        String rupees = context.getResources().getString(R.string.rupees);
+        holder.tv_company_name.setText(marketDataList.get(position).getCompanyName());
+        holder.tv_share_price.setText(rupees+marketDataList.get(position).getDisplayVal1().toString());
+        if(marketDataList.get(position).getDisplayVal2() != null){
+            holder.tv_percent_gain.setVisibility(View.VISIBLE);
+            holder.tv_percent_gain.setText(marketDataList.get(position).getDisplayVal2().toString());
+        }else{
+            holder.tv_percent_gain.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return records.size();
+        return marketDataList.size();
     }
 
     public static class StockViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_company_name,tv_share_price;
+        TextView tv_company_name,tv_share_price,tv_percent_gain;
         public StockViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_company_name = itemView.findViewById(R.id.tv_company_name);
             tv_share_price = itemView.findViewById(R.id.tv_share_price);
+            tv_percent_gain = itemView.findViewById(R.id.tv_percent_gain);
         }
     }
 }

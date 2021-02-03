@@ -42,7 +42,7 @@ public class LivePriceDto {
     private Double highPriceRange;
     @SerializedName("volume")
     @Expose
-    private Integer volume;
+    private Long volume;
     @SerializedName("totalBuyQty")
     @Expose
     private Double totalBuyQty;
@@ -146,11 +146,11 @@ public class LivePriceDto {
         this.highPriceRange = highPriceRange;
     }
 
-    public Integer getVolume() {
+    public Long getVolume() {
         return volume;
     }
 
-    public void setVolume(Integer volume) {
+    public void setVolume(Long volume) {
         this.volume = volume;
     }
 

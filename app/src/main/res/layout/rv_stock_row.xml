@@ -7,6 +7,7 @@
     <TextView
         android:id="@+id/tv_company_name"
         android:layout_margin="16dp"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Reliance Industries"/>
@@ -15,25 +16,34 @@
         android:id="@+id/tv_share_price"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Reliance Industries"
         android:layout_alignParentRight="true" />
 
     <TextView
-        android:id="@+id/tv_share_price"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
+        android:id="@+id/tv_percent_gain"
+        android:layout_marginEnd="16dp"
+        android:textSize="14sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Reliance Industries"
-        android:layout_alignParentRight="true" />
+        android:layout_below="@+id/tv_share_price"
+        tools:text="Reliance"
+        android:textColor="@color/green"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp" />
 
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/tv_company_name"/>
+        android:layout_marginTop="2dp"
+        android:background="@color/grey"
+        android:layout_marginBottom="2dp"
+        android:layout_below="@id/tv_percent_gain"/>
 
 </RelativeLayout>
