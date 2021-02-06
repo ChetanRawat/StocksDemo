@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<ImageView
+    android:id="@+id/iv_company_logo"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginStart="8dp"
+    android:src="@drawable/ic_launcher_foreground"
+    android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/tv_company_short_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RELIANCE"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@id/iv_company_logo"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:textAllCaps="true"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/tv_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reliance Industries"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAllCaps="true"
+        android:layout_toRightOf="@id/iv_company_logo"
+        android:layout_marginStart="8dp"
+        android:layout_below="@+id/tv_company_short_name"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/tv_company_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1,925.80"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textAllCaps="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/iv_company_logo"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/tv_company_gain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+30.50"
+        android:textSize="16sp"
+        android:textColor="@color/green"
+        android:textAllCaps="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/tv_company_price"
+        android:layout_marginLeft="8dp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sw_company_reg_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:outlineSpotShadowColor="@color/green"
+
+        android:layout_alignBaseline="@+id/tv_company_price"
+        android:layout_alignParentRight="true"
+        android:text="BSE" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager_chart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/tv_company_gain">
+    </androidx.viewpager.widget.ViewPager>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_chart"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        app:tabTextColor="@color/black"
+        app:tabIndicatorColor="@color/green"
+        app:tabIndicatorFullWidth="false"
+        android:layout_below="@+id/pager_chart">
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <TextView
+        android:id="@+id/tv_performance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tab_chart"
+        android:text="Performance"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp" />
+
+    <View
+        android:id="@+id/seprater"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/grey"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_below="@+id/tv_performance"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/tv_low_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low Today"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:layout_marginStart="8dp"
+        android:layout_below="@+id/seprater"
+        android:layout_marginLeft="8dp" />
+
+    <SeekBar
+        android:id="@+id/sb_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:splitTrack="false"
+        android:layout_below="@+id/tv_low_today"/>
+
+
+
+
+
+</RelativeLayout>

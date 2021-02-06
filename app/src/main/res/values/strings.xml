@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">RILStocks</string>
     <string name="rupees">\u20B9</string>
+    <string name="one_day">1D</string>
+    <string name="one_week">1W</string>
+    <string name="one_month">1M</string>
+    <string name="one_year">1Y</string>
+    <string name="three_year">3Y</string>
+    <string name="five_year">5Y</string>
 </resources>

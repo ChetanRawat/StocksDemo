@@ -11,11 +11,8 @@ import android.widget.TextView;
 import com.example.rilstocks.model.MarketUiData;
 import com.example.rilstocks.model.Record;
 import com.example.rilstocks.model.StocksData;
+import com.example.rilstocks.utils.AppUtils;
 import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -34,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         tv_market_filter = findViewById(R.id.tv_market_filter);
         tv_market_filter.setTag(1);
         rv_stocks = findViewById(R.id.rv_stocks);
-        String jsondata = loadJSONFromAsset("all_stocks.json");
+        String jsondata = AppUtils.loadJSONFromAsset("all_stocks.json",this);
         StocksData stocksData = new Gson().fromJson(jsondata,StocksData.class);
         marketData = getMarketData(stocksData.getRecords(),1);
         StockListAdapter adapter = new StockListAdapter(marketData,MainActivity.this);
@@ -97,21 +94,5 @@ public class MainActivity extends AppCompatActivity {
     private Double getCapDataInCr(Long marketCap) {
         Long amt = marketCap/10000000;
         return (double)amt;
-    }
-
-    public String loadJSONFromAsset(String fileName) {
-        String json = null;
-        try {
-            InputStream is = getAssets().open(fileName);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
     }
 }

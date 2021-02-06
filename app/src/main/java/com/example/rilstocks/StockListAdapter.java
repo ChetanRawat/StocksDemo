@@ -1,6 +1,7 @@
 package com.example.rilstocks;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
 
     List<MarketUiData> marketDataList = new ArrayList<>();
     Context context;
+
 
     public StockListAdapter(List<MarketUiData> marketDataList,Context context) {
         this.marketDataList = marketDataList;
@@ -45,6 +47,17 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
         }else{
             holder.tv_percent_gain.setVisibility(View.INVISIBLE);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(position == 0){
+                    Intent intent = new Intent(context,StockDetailActivity.class);
+                    context.startActivity(intent);
+                }
+            }
+        });
+
+
     }
 
     @Override
