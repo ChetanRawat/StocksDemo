@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="filter-sort"
+        android:textSize="12sp"
         android:textColor="@color/green"
         android:textAllCaps="true"
         android:layout_margin="12dp"/>
@@ -23,7 +24,7 @@
         android:textColor="@color/green"
         android:textAllCaps="false"
         android:layout_alignParentEnd="true"
-        android:layout_margin="12dp"
+        android:layout_margin="12sp"
         android:layout_alignParentRight="true" />
 
     <androidx.recyclerview.widget.RecyclerView

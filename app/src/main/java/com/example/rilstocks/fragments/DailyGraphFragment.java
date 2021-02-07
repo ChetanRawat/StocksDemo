@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rilstocks.ChartMarker;
 import com.example.rilstocks.R;
 import com.example.rilstocks.model.DailyStocksCandleModel;
 import com.example.rilstocks.model.StocksData;
@@ -59,7 +60,7 @@ public class DailyGraphFragment extends Fragment {
         dataset.setDrawCircleHole(false);
         dataset.setDrawCircles(false);
         dataset.setLineWidth(2f);
-        dataset.setHighlightEnabled(false);
+        dataset.setHighlightEnabled(true);
         dataset.setDrawHighlightIndicators(false);
         daily_lc.setData(new LineData(dataset));
         daily_lc.invalidate();
@@ -72,11 +73,15 @@ public class DailyGraphFragment extends Fragment {
         daily_lc.getLegend().setEnabled(false);
         daily_lc.getDescription().setEnabled(false);
         daily_lc.setTouchEnabled(true);
+        daily_lc.setHighlightPerDragEnabled(true);
+        daily_lc.setHighlightPerTapEnabled(true);
         daily_lc.setDragEnabled(true);
         daily_lc.setScaleEnabled(false);
         daily_lc.setViewPortOffsets(0f, 0f, 0f, 0f);
         daily_lc.getAxisLeft().setDrawAxisLine(false);
         daily_lc.getAxisRight().setDrawAxisLine(false);
         daily_lc.setPinchZoom(false);
+        ChartMarker mv = new ChartMarker(getContext(), R.layout.layout_marker_view);
+        daily_lc.setMarker(mv);
     }
 }

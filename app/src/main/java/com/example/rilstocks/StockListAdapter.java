@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.rilstocks.model.MarketUiData;
 import com.example.rilstocks.model.Record;
+import com.example.rilstocks.utils.AppUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,8 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
         holder.tv_share_price.setText(rupees+marketDataList.get(position).getDisplayVal1().toString());
         if(marketDataList.get(position).getDisplayVal2() != null){
             holder.tv_percent_gain.setVisibility(View.VISIBLE);
-            holder.tv_percent_gain.setText(marketDataList.get(position).getDisplayVal2().toString());
+            double val = AppUtils.round(marketDataList.get(position).getDisplayVal2(),2);
+            holder.tv_percent_gain.setText(""+val);
         }else{
             holder.tv_percent_gain.setVisibility(View.INVISIBLE);
         }
