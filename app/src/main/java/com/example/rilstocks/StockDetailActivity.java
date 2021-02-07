@@ -36,7 +36,7 @@ public class StockDetailActivity extends AppCompatActivity {
     ViewPager pager_chart;
     TabLayout tab_chart;
     SeekBar sb_performance_low,sb_performance_52w_low;
-    TextView tv_low_price,tv_high_price,tv_52w_low_price,tv_52w_high_price,tv_company_gain;
+    TextView tv_low_price,tv_high_price,tv_52w_low_price,tv_52w_high_price,tv_company_gain,tv_company_price;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class StockDetailActivity extends AppCompatActivity {
         pager_chart = findViewById(R.id.pager_chart);
         tab_chart = findViewById(R.id.tab_chart);
         tv_company_gain = findViewById(R.id.tv_company_gain);
+        tv_company_price = findViewById(R.id.tv_company_price);
         tv_52w_low_price = findViewById(R.id.tv_52w_low_price);
         tv_52w_high_price = findViewById(R.id.tv_52w_high_price);
         sb_performance_low = findViewById(R.id.sb_performance_low);
@@ -55,8 +56,8 @@ public class StockDetailActivity extends AppCompatActivity {
         setupGraphPager();
         String jsonData = AppUtils.loadJSONFromAsset("reliance_stocks_latest_prices.json",this);
         RelianceLatestStocksModel relianceLatestStocksModel = new Gson().fromJson(jsonData, RelianceLatestStocksModel.class);
-        tv_company_gain.setText(relianceLatestStocksModel.getDayChange()+"("+ AppUtils.round(relianceLatestStocksModel.getDayChangePerc(),2)+"%)");
-
+        tv_company_gain.setText("+"+relianceLatestStocksModel.getDayChange()+"("+ AppUtils.round(relianceLatestStocksModel.getDayChangePerc(),2)+"%)");
+        tv_company_price.setText(getResources().getString(R.string.rupees)+" 1,925.80");
         tv_low_price.setText(getResources().getString(R.string.rupees)+"867.43");
         tv_high_price.setText(getResources().getString(R.string.rupees)+"2369.45");
         tv_52w_low_price.setText(getResources().getString(R.string.rupees)+"867.43");

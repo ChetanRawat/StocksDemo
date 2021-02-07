@@ -3,6 +3,8 @@ package com.example.rilstocks.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigDecimal;
+
 public class Record {
 
     @SerializedName("isin")
@@ -37,7 +39,7 @@ public class Record {
     private Double closePrice;
     @SerializedName("marketCap")
     @Expose
-    private Long marketCap;
+    private BigDecimal marketCap;
     @SerializedName("livePriceDto")
     @Expose
     private LivePriceDto livePriceDto;
@@ -122,11 +124,11 @@ public class Record {
         this.closePrice = closePrice;
     }
 
-    public Long getMarketCap() {
+    public BigDecimal getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(Long marketCap) {
+    public void setMarketCap(BigDecimal marketCap) {
         this.marketCap = marketCap;
     }
 

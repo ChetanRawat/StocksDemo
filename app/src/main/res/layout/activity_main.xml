@@ -23,8 +23,11 @@
         android:text="Market Price"
         android:textColor="@color/green"
         android:textAllCaps="false"
+        android:drawablePadding="3dp"
+        android:background="?attr/selectableItemBackground"
         android:layout_alignParentEnd="true"
         android:layout_margin="12sp"
+        android:drawableRight="@drawable/ic_double_arrow"
         android:layout_alignParentRight="true" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -4,15 +4,25 @@ public class MarketUiData {
 
     private String companyName;
 
-    private Double displayVal1;
+    private String displayVal1;
 
     private Double displayVal2;
 
-    public Double getDisplayVal1() {
+    private Double percentageChange;
+
+    public Double getPercentageChange() {
+        return percentageChange;
+    }
+
+    public void setPercentageChange(Double percentageChange) {
+        this.percentageChange = percentageChange;
+    }
+
+    public String getDisplayVal1() {
         return displayVal1;
     }
 
-    public void setDisplayVal1(Double displayVal1) {
+    public void setDisplayVal1(String displayVal1) {
         this.displayVal1 = displayVal1;
     }
 

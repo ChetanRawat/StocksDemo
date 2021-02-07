@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.rilstocks.fragments.DailyGraphFragment;
 import com.example.rilstocks.fragments.MonthlyGraphFragments;
+import com.example.rilstocks.fragments.ThreeYearGraphCandleFragment;
 import com.example.rilstocks.fragments.WeeklyGraphFragment;
 import com.example.rilstocks.fragments.YearlyGraphFragment;
 import com.example.rilstocks.model.GraphPagerModel;
@@ -36,7 +37,7 @@ public class GraphAdapter extends FragmentPagerAdapter {
             case 3:
                 return new YearlyGraphFragment();
             case 4:
-                return new YearlyGraphFragment();
+                return new ThreeYearGraphCandleFragment();
             case 5:
                 return new YearlyGraphFragment();
             case 6:

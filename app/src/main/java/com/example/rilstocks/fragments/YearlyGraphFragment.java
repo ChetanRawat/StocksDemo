@@ -51,7 +51,7 @@ public class YearlyGraphFragment extends Fragment {
                 entries.add(entry);
             }
         }
-        LineDataSet dataset = new LineDataSet(entries, "Unused label");
+        LineDataSet dataset = new LineDataSet(entries, "Time series");
         dataset.setColor(getResources().getColor(R.color.green));
         dataset.setValueTextColor(getResources().getColor(R.color.green));
         dataset.setHighLightColor(getResources().getColor(R.color.green));

@@ -15,6 +15,8 @@ import com.example.rilstocks.utils.AppUtils;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,25 +76,23 @@ public class MainActivity extends AppCompatActivity {
             MarketUiData marketData  = new MarketUiData();
             marketData.setCompanyName(data.getCompanyShortName());
             if(filterId == 1){
-                marketData.setDisplayVal1(data.getLivePriceDto().getLtp());
+                marketData.setDisplayVal1(""+data.getLivePriceDto().getLtp());
                 marketData.setDisplayVal2(data.getLivePriceDto().getDayChange());
+                marketData.setPercentageChange(data.getLivePriceDto().getDayChangePerc());
             }else if(filterId == 2){
-                marketData.setDisplayVal1(data.getYearlyHighPrice());
-                marketData.setDisplayVal2(null);
+                marketData.setDisplayVal1(""+data.getYearlyHighPrice());
             }else if(filterId == 3){
-                marketData.setDisplayVal1(data.getYearlyLowPrice());
-                marketData.setDisplayVal2(null);
+                marketData.setDisplayVal1(""+data.getYearlyLowPrice());
             }else if(filterId == 4){
-                marketData.setDisplayVal1(getCapDataInCr(data.getMarketCap()));
-                marketData.setDisplayVal2(null);
+                marketData.setDisplayVal1(""+getCapDataInCr(data.getMarketCap()));
             }
             marketDataList.add(marketData);
         }
         return marketDataList;
     }
 
-    private Double getCapDataInCr(Long marketCap) {
-        Long amt = marketCap/10000000;
-        return (double)amt;
+    private BigDecimal getCapDataInCr(BigDecimal marketCap) {
+        BigDecimal amt = marketCap.divide(new BigDecimal(1000000000));
+        return amt.setScale(2, RoundingMode.HALF_UP);
     }
 }

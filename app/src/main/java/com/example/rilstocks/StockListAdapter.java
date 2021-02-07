@@ -41,11 +41,17 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
     public void onBindViewHolder(@NonNull StockViewHolder holder, int position) {
         String rupees = context.getResources().getString(R.string.rupees);
         holder.tv_company_name.setText(marketDataList.get(position).getCompanyName());
-        holder.tv_share_price.setText(rupees+marketDataList.get(position).getDisplayVal1().toString());
+        holder.tv_share_price.setText(rupees+marketDataList.get(position).getDisplayVal1());
         if(marketDataList.get(position).getDisplayVal2() != null){
             holder.tv_percent_gain.setVisibility(View.VISIBLE);
             double val = AppUtils.round(marketDataList.get(position).getDisplayVal2(),2);
-            holder.tv_percent_gain.setText(""+val);
+            double percentChange = AppUtils.round(marketDataList.get(position).getPercentageChange(),2);
+            holder.tv_percent_gain.setText(""+val+"("+percentChange+"%)");
+            if(val < 0){
+                holder.tv_percent_gain.setTextColor(context.getResources().getColor(R.color.red));
+            }else{
+                holder.tv_percent_gain.setTextColor(context.getResources().getColor(R.color.green));
+            }
         }else{
             holder.tv_percent_gain.setVisibility(View.INVISIBLE);
         }
