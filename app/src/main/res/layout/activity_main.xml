@@ -11,9 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="filter-sort"
+        android:padding="6dp"
         android:textSize="12sp"
+        android:textStyle="bold"
         android:textColor="@color/green"
         android:textAllCaps="true"
+        android:background="@drawable/filter_bg"
         android:layout_margin="12dp"/>
 
     <TextView
@@ -21,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Market Price"
+        android:textStyle="bold"
         android:textColor="@color/green"
         android:textAllCaps="false"
         android:drawablePadding="3dp"

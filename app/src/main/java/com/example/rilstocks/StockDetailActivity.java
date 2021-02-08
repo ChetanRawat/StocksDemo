@@ -3,7 +3,9 @@ package com.example.rilstocks;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.rilstocks.model.DailyStocksCandleModel;
@@ -28,21 +30,22 @@ import java.util.Locale;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.viewpager.widget.ViewPager;
 
 public class StockDetailActivity extends AppCompatActivity {
 
-    LineChart chartView;
     ViewPager pager_chart;
     TabLayout tab_chart;
     SeekBar sb_performance_low,sb_performance_52w_low;
     TextView tv_low_price,tv_high_price,tv_52w_low_price,tv_52w_high_price,tv_company_gain,tv_company_price;
+    TextView tv_nse,tv_bse;
+    SwitchCompat sw_company_reg_in;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_detail);
-//        chartView = findViewById(R.id.chartView);
         pager_chart = findViewById(R.id.pager_chart);
         tab_chart = findViewById(R.id.tab_chart);
         tv_company_gain = findViewById(R.id.tv_company_gain);
@@ -53,6 +56,9 @@ public class StockDetailActivity extends AppCompatActivity {
         tv_low_price = findViewById(R.id.tv_low_price);
         tv_high_price = findViewById(R.id.tv_high_price);
         sb_performance_52w_low = findViewById(R.id.sb_performance_52w_low);
+        sw_company_reg_in = findViewById(R.id.sw_company_reg_in);
+        tv_nse = findViewById(R.id.tv_nse);
+        tv_bse = findViewById(R.id.tv_bse);
         setupGraphPager();
         String jsonData = AppUtils.loadJSONFromAsset("reliance_stocks_latest_prices.json",this);
         RelianceLatestStocksModel relianceLatestStocksModel = new Gson().fromJson(jsonData, RelianceLatestStocksModel.class);
@@ -71,49 +77,24 @@ public class StockDetailActivity extends AppCompatActivity {
             }
         });
 
-//        initChartView();
-//        setChartData();
+        sw_company_reg_in.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    tv_bse.setTextColor(getResources().getColor(R.color.green));
+                    tv_nse.setTextColor(getResources().getColor(R.color.dark_grey));
+                }else{
+                    tv_nse.setTextColor(getResources().getColor(R.color.green));
+                    tv_bse.setTextColor(getResources().getColor(R.color.dark_grey));
+                }
+            }
+        });
 
     }
 
     private void setupGraphPager() {
        GraphAdapter graphAdapter = new GraphAdapter(getSupportFragmentManager(),this);
-        // Set the adapter onto the view pager
         pager_chart.setAdapter(graphAdapter);
         tab_chart.setupWithViewPager(pager_chart);
-    }
-
-    private void setChartData() {
-        List<Entry> entries = new ArrayList<>();
-        Entry entry1 = new Entry(1f,1f);
-        Entry entry2 = new Entry(2f,2f);
-        Entry entry3 = new Entry(3f,3f);
-        Entry entry4 = new Entry(4f,4f);
-        entries.add(entry1);
-        entries.add(entry2);
-        entries.add(entry3);
-        entries.add(entry4);
-        LineDataSet dataset = new LineDataSet(entries, "Unused label");
-        dataset.setColor(getResources().getColor(R.color.black));
-        dataset.setValueTextColor(getResources().getColor(R.color.black));
-        dataset.setHighLightColor(getResources().getColor(R.color.black));
-        dataset.setDrawValues(false);
-        dataset.setLineWidth(1f);
-        dataset.setHighlightEnabled(true);
-        dataset.setDrawHighlightIndicators(false);
-        chartView.setData(new LineData(dataset));
-        chartView.invalidate();
-    }
-
-    private void initChartView() {
-        chartView.getAxisLeft().setEnabled(false);
-        chartView.getAxisLeft().setEnabled(false);
-        chartView.getXAxis().setEnabled(false);
-        chartView.getLegend().setEnabled(false);
-        chartView.getDescription().setEnabled(false);
-        chartView.setTouchEnabled(true);
-        chartView.setDragEnabled(true);
-        chartView.setScaleEnabled(false);
-        chartView.setPinchZoom(false);
     }
 }
